@@ -1,0 +1,15 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>{{vm.errorMessage}}</h1>
+
+    <wait-cursor ng-show="vm.isBusy"></wait-cursor>
+    <p>Are you sure you want to delete: {{vm.projectName}}, click confirm to continue.</p>
+            
+    
+    <form novalidate name="editProjectForm">
+        <div class="form-group">
+
+            <a ng-click="vm.deleteProject()" class="btn btn-danger btn-sm">Confirm Delete</a>
+            <a ng-href="#!/" class="btn btn-default btn-sm">Cancel</a>
+        </div>
+    </form>
+</div>

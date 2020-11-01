@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "Default": "Server=lounge-pc;Database=projects;MultipleActiveResultSets=True; User=defaultuser; Password=pwd123;"
+  }
+}

@@ -1,0 +1,24 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>{{vm.errorMessage}}</h1>
+
+    <wait-cursor ng-show="vm.isBusy"></wait-cursor>
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>Created Date</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>StoryCount</th>
+            <th>Manage</th>
+        </tr>
+        <tr ng-repeat="project in vm.projects">
+            <td>{{ project.createdDate | date:shortDate}}</td>
+            <td>{{ project.name }}</td>
+            <td>{{ project.description }}</td>
+            <td>{{ project.StoryCount}}</td>
+            <td><a ng-href="#!/editor/{{project.projectId}}" class="btn btn-primary btn-sm">Manage</a></td>
+        </tr>
+    </table>
+    <div>
+        <a ng-href="#!/create" class="btn btn-primary btn-sm">Add New Project</a>
+    </div>
+</div>

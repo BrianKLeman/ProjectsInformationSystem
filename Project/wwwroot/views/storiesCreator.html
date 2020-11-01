@@ -1,0 +1,29 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>{{storyVm.errorMessage}}</h1>
+
+    <wait-cursor ng-show="storyVm.isBusy"></wait-cursor>
+    <form novalidate name="createStoryForm" ng-submit="storyVm.createStory()">
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" id="Name" name="Name" ng-model="storyVm.story.name" class="form-control" required ng-minlength="5" />
+            <span ng-show="createStoryForm.Name.$error.required" class="text-warning">The story title is required.</span>
+            <span ng-show="createStoryForm.Name.$error.minlength" class="text-warning">At least five characters are required.</span>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" id="Description" name="Description" ng-model="storyVm.story.description" class="form-control" required ng-minlength="30" />
+            <span ng-show="createStoryForm.Description.$error.required" class="text-warning">The story description is required.</span>
+            <span ng-show="createStoryForm.Description.$error.minlength" class="text-warning">At least thirty characters are required.</span>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" id="Status" name="Status" ng-model="storyVm.story.status" class="form-control" required ng-minlength="6" />
+            <span ng-show="createStoryForm.Status.$error.required" class="text-warning">The story status is required.</span>
+            <span ng-show="createStoryForm.Status.$error.minlength" class="text-warning">At least six characters are required.</span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-success btn-sm" ng-disabled="createStoryForm.$invalid" />
+            <a ng-href="#!/" class="btn btn-default btn-sm">Cancel</a>
+        </div>
+    </form>
+</div>

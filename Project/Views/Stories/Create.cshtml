@@ -1,0 +1,30 @@
+﻿@model Story
+@section scripts
+    {
+}
+<h1>Create a new story</h1>
+<div class="col-md-6 col-md-offset-3">
+    <form method="post" asp-action="AddStory" asp-controller="Stories">       
+        <div class="form-group">
+            <label asp-for="Description"></label>
+            <input type="text" asp-for="Description" class="form-control" required />
+            <!--<span ng-show="createStoryForm.Description.$error.required" class="text-warning">The story description is required.</span>-->
+            <!--<span ng-show="createStoryForm.Description.$error.minlength" class="text-warning">At least thirty characters are required.</span>-->
+        </div>
+        <div class="form-group">
+            <label asp-for="Status"></label>
+            <input type="text" asp-for="Status" class="form-control" required />
+            <!--<span ng-show="createStoryForm.Status.$error.required" class="text-warning">The story status is required.</span>-->
+            <!--<span ng-show="createStoryForm.Status.$error.minlength" class="text-warning">At least six characters are required.</span>-->
+        </div>
+        <div class="form-group">
+            @await Component.InvokeAsync("StoryReleasesSelection", Model)
+        </div>
+        <input type="hidden" asp-for="ProjectId" value="@Model.ProjectId"/>
+        <div class="form-group">
+            <input type="submit" class="btn btn-success btn-sm" />
+            <a class="btn btn-default btn-sm">Cancel</a>
+        </div>
+
+    </form>
+</div>

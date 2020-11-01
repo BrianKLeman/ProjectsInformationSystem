@@ -1,0 +1,41 @@
+﻿@model  StoriesSummary
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@section scripts{
+
+}
+<h3>Stories for @Model.ProjectModel?.Name</h3>
+<div>
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th class="text-center">Story ID</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Status</th>
+            <th class="text-center">Amend</th>
+            <th class="text-center">Delete</th>
+        </tr>
+        @foreach (var story in Model?.Stories)
+        {
+        <tr>
+            <td>@story?.StoryId</td>
+            <td>@story.Description</td>
+            <td>@story.Status</td>
+
+            @{
+                IDictionary<string, string> routeData = new Dictionary<string, string>();
+                routeData.Add("projectId", story.ProjectId.ToString());
+                routeData.Add("storyId", story.StoryId.ToString());
+            }
+            <td><a asp-action="Edit" asp-controller="Stories" asp-all-route-data="@routeData" class="btn btn-success btn-sm">Amend</a></td>
+            <td><a asp-action="Delete" asp-controller="Stories" asp-all-route-data="@routeData" class="btn btn-danger btn-sm">Delete</a></td>
+            <!--<td><a ng- class="btn btn-primary btn-sm">Manage</a></td>-->
+        </tr>
+
+
+        }
+        
+    </table>
+    <a href="/Stories/@Model.ProjectModel.ProjectId/Create/" class="btn btn-success btn-sm">Add Story</a>
+</div>

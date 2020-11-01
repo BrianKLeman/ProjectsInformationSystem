@@ -1,0 +1,29 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>{{vm.errorMessage}}</h1>
+    <wait-cursor ng-show="vm.isBusy"></wait-cursor>
+    <form novalidate name="editProjectForm" ng-submit="vm.updateProject()">
+        <div class="form-group">
+            <label for="Name">Name</label>
+            <input type="text" id="Name" name="Name" ng-model="vm.project.name" class="form-control" required ng-minlength="5" />
+            <span ng-show="editProjectForm.Name.$error.required" class="text-warning">The project name is required.</span>
+            <span ng-show="editProjectForm.Name.$error.minlength" class="text-warning">At least five characters are required.</span>
+        </div>
+        <div class="form-group">
+            <label for="Description">Description</label>
+            <input type="text" id="Description" name="Description" ng-model="vm.project.description" class="form-control" required ng-minlength="30" />
+            <span ng-show="editProjectForm.Description.$error.required" class="text-warning">The project description is required.</span>
+            <span ng-show="editProjectForm.Description.$error.minlength" class="text-warning">At least thirty characters are required.</span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Update" class="btn btn-success btn-sm" ng-disabled="editProjectForm.$invalid" />
+
+            <a ng-href="#!/delete/{{vm.project.projectId}}/{{vm.project.name}}" class="btn btn-danger btn-sm">Delete</a>
+            <a ng-href="#!/" class="btn btn-default btn-sm">Cancel</a>
+        </div>
+        <div class="form-group">
+            <a ng-href="#!/view/release/{{vm.project.projectId}}" class="btn btn-default btn-sm">View Releases</a>
+        </div>
+    </form>
+
+    <stories-view></stories-view>
+</div>

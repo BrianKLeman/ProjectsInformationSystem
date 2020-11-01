@@ -1,0 +1,27 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <h1>{{vm.errorMessage}}</h1>
+
+    <wait-cursor ng-show="vm.isBusy"></wait-cursor>
+    <form novalidate name="createProjectForm" ng-submit="vm.createProject()">
+        <div class="form-group">
+            <label for="Name">
+                Name
+                <input type="text" id="Name" name="Name" ng-model="vm.project.name" class="form-control" required ng-minlength="5" />
+            </label>
+            <span ng-show="createProjectForm.Name.$error.required" class="text-warning">The project name is required.</span>
+            <span ng-show="createProjectForm.Name.$error.minlength" class="text-warning">At least five characters are required.</span>
+        </div>
+        <div class="form-group">
+            <label for="Description">
+                Description
+                <input type="text" id="Description" name="Description" ng-model="vm.project.description" class="form-control" required ng-minlength="30" />
+            </label>
+            <span ng-show="createProjectForm.Description.$error.required" class="text-warning">The project description is required.</span>
+            <span ng-show="createProjectForm.Description.$error.minlength" class="text-warning">At least thirty characters are required.</span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" class="btn btn-success btn-sm" ng-disabled="createProjectForm.$invalid" />
+            <a ng-href="#!/" class="btn btn-default btn-sm">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+﻿<div class="col-md-6 col-md-offset-3">
+    <wait-cursor ng-show="vm.isBusy"></wait-cursor>
+    <h1>{{vm.errorMessage}}</h1>
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>Created Date</th>
+            <th>Name</th>
+            <th>Expected Release Date</th>
+            <th>Actual Release Date</th>
+            <th>Manage</th>
+        </tr>
+        <tr ng-repeat="release in vm.releases">
+            <td>{{ release.createdDate | date:shortDate}}</td>
+            <td>{{ release.name }}</td>
+            <td>{{ release.expectedReleaseDate | date:shortDate }}</td>
+            <td>{{ release.actualReleaseDate | date:shortDate }}</td>
+            <td><a ng-href="#!/editRelease/{{release.releaseId}}/{{vm.projectId}}" class="btn btn-primary btn-sm">Edit</a></td>
+        </tr>
+    </table>
+    <div>
+        <a ng-href="#!/create/release/{{vm.projectId}}" class="btn btn-primary btn-sm">Create Release</a>
+    </div>
+</div>

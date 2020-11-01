@@ -1,0 +1,22 @@
+﻿<div class="col-md-12">
+    <h1 ng-show="vm.errorMessage">{{vm.errorMessage}}</h1>
+    <h1>Stories</h1>
+    <wait-cursor ng-show="vm.isBusy"></wait-cursor>
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Manage</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat="story in vm.stories">
+            <td>{{ story.description}}</td>
+            <td>{{ story.status }}</td>
+            <td><a ng-href="#!/" class="btn btn-primary btn-sm">Manage</a></td>
+            <td><a ng-href="#!/project/{{story.ProjectId}}/stories/{{story.storyID}}" class="btn btn-warning btn-sm">Delete</a></td>
+        </tr>
+    </table>
+    <div>
+        <a ng-href="#!/project/{{vm.project.projectId}}/stories/create" class="btn btn-primary btn-sm">Add New Story</a>
+    </div>
+</div>

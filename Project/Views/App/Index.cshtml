@@ -1,0 +1,44 @@
+﻿@model  IEnumerable<ProjectSummary>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+@section scripts{
+
+}
+<h3>Your Projects</h3>
+<div>
+    <table class="table table-responsive table-striped">
+        <tr>
+            <th class="text-center">Created Date</th>
+            <th class="text-center">Name</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Story Count</th>
+            <th class="text-center">Release Count</th>
+            <th class="text-center">Manage Releases</th>
+            <th class="text-center">Manage Stories</th>
+        </tr>
+        @foreach (var project in Model)
+        {
+        <tr>
+            <td>@project.ProjectModel.CreatedDate.ToString("MMM dd, yyyy")</td>
+            <td>@project.ProjectModel.Name</td>
+            <td>@project.ProjectModel.Description</td>
+            <td>@project.StoryCount</td>
+            <td>@project.ReleaseCount</td>
+
+            @{
+                IDictionary<string, string> routeData = new Dictionary<string, string>();
+                routeData.Add("projectId", project.ProjectModel.ProjectId.ToString());
+            }
+            <td><a asp-action="Index" asp-controller="Releases" asp-all-route-data="@routeData" class="btn btn-primary btn-sm">Manage Releases</a></td>
+            <td><a asp-action="Index" asp-controller="Stories" asp-all-route-data="@routeData" class="btn btn-primary btn-sm">Manage Stories</a></td>
+        </tr>
+
+
+        }
+
+    </table>
+    <a asp-action="Create" class="btn btn-primary btn-sm">Add new Project</a>
+
+</div>

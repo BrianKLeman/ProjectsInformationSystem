@@ -1,0 +1,12 @@
+﻿@model StoryReleaseSelectionViewModel
+
+<div>
+    @foreach(var release in Model.Releases)
+    {
+        <br/>
+    <label for="ReleaseID" id="ReleaseID">
+        <input type="radio" name="ReleaseID" id="ReleaseID" value="@release.ReleaseId" @(release.ReleaseId == Model.selectedReleaseID ? "checked" : "") />
+@release.Name
+    </label>
+        }
+</div>
